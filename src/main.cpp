@@ -90,7 +90,7 @@ int ValidID(int NodeID){
 int GiveID(int serailnumber){
   // Q6 a completer - Notre DHCP
   // utilisez AdresseNodeID
-return 0;
+  return AdresseNodeID[serailnumber];
 }
 
 int sendLORA(int idx,int src, int dst, int sdx, int cmd, const char *data,int len) {
@@ -114,7 +114,8 @@ char buf[10]; // Buffeur utilisé pour l'envois de la trame
 int len;      // longueur de la trame
 
 int sendtheIDToTheNode(int serialnumber){
-  //Q7
+  //sendLORA(0x01, 0x01, 0x00, 0x01, 0x01, GiveID(serialnumber) + ";" + MYNETID + ";" + serialnumber + ";",  2+2+2+3);
+  return 1;
 }
 
 int sendTheChannelAndFieldToTheNode(int NodeID){
