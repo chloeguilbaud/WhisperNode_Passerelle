@@ -12,12 +12,12 @@
 #include <string.h>
 
 ////// CONFIGURATION DE VOTRE passerelle
-#define MYNETID 1
+#define MYNETID 10
 #define MYID 1
 char ApiKey[12][17] ={{"EQO8D7GQVBLLT36N"},{"YRGE2FK0CGPEZWQJ"},{"O1FZI4AYN4VIZPU2"},{"Q3QQ6OFTRR3L04NE"},{"SRWO9BG3OZHC0PL5"},{"DCSTVQC7GY5P11M3"},{"M2992WXGN8PHK8NA"},{"LT5B0WBT35CI2KB0"},{"SQHPJ5XGYBL1GTZF"},{"ODGUVROVSU52F577"},{"OSY0XYHG2Z357VJI"},{"QGXS4YNC83V77GGW"}};
 int channelNumber[12] ={548246,550278,550279,592619,592620,592621,592623,592624,592625,592626,592627,592629};
-#define WIFISSID "---"
-#define WIFIPASS "---"
+#define WIFISSID "OnePlus 6"
+#define WIFIPASS "testtest"
 /////////////////////////////////////////
 
 
@@ -208,7 +208,7 @@ void loop() {
     display.clear();
 
     // Q5 définissez le filtrage
-    if ((myMsg.idx == 0x00)&&(myMsg.dst==0x00)&&(myMsg.src==0x00)&&(myMsg.sdx=0x00)) {
+    if ((myMsg.idx == 0x01)&&(myMsg.dst==0x01)&&(myMsg.src==10)&&(myMsg.sdx=0x01)) {
       Serial.print("Envois d'un ID au numero de serie : ");
       parseString((char *) myMsg.data);
       Serial.println(arrayint[0]);
@@ -218,7 +218,7 @@ void loop() {
     }
 
     // Q5 définissez le filtrage
-    if ((myMsg.idx == 0x00)&&(myMsg.dst==0x00)&&(myMsg.sdx=0x00)&&(myMsg.cmd==0x00)) {
+    if ((myMsg.idx == 0x01)&&(myMsg.dst==0x01)&&(myMsg.sdx=0x01)&&(myMsg.cmd==0x00)) {
       Serial.print("Envois du numero channel et field a :");
       Serial.println(myMsg.src,HEX);
       sendTheChannelAndFieldToTheNode(myMsg.src);
@@ -227,7 +227,7 @@ void loop() {
     }
 
     // Q5 définissez le filtrage
-    if ((myMsg.idx == 0x00)&&(myMsg.dst==0x00)&&(myMsg.sdx=0x00)&&(myMsg.cmd==0x00)) {
+    if ((myMsg.idx == 0x01)&&(myMsg.dst==0x01)&&(myMsg.sdx=0x01)&&(myMsg.cmd==0x00)) {
       char buf[5];
       Serial.print("Envois a ThingSpeak de : ");
       Serial.print(myMsg.src,HEX);
